@@ -19,6 +19,7 @@ angular.module('CapitalBusApp').config(['$stateProvider', '$urlRouterProvider', 
                         insertBefore: '#ng_load_plugins_before',
                         files: [
                             BASE_URL + 'angularjs-app/resources/CircuitResource.js',
+                            BASE_URL + 'angularjs-app/resources/CostBraceletResource.js',
                             BASE_URL + 'angularjs-app/controllers/bracelet/BraceleteGenerateController.js'
                         ]
                     });

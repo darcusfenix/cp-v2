@@ -11,30 +11,30 @@
             <thead>
             <tr class="uppercase">
                 <th class="bold font-green text-center"></th>
-                <th class="bold font-green text-center" ng-repeat="duracion in duracionList">
-                    {{duracion.duracion + (' Horas')}}
+                <th class="bold font-green text-center" ng-repeat="daysDuration in daysDurationList">
+                    {{daysDuration.days }}
                 </th>
                 <th class="text-center bold font-green">Total</th>
             </tr>
             </thead>
 
-            <tr ng-repeat="persona in personaList">
-                <th class="font-blue text-uppercase  text-center">{{persona.nombre}}</th>
-                <th class=" text-center" ng-repeat="duracion in duracionList">
-                    {{ getTotalBetweenPersonaAndDuracion(persona.id, duracion.id) }}
+            <tr ng-repeat="kindPerson in kindPersontList">
+                <th class="font-blue text-uppercase  text-center">{{kindPerson.name}}</th>
+                <th class=" text-center" ng-repeat="daysDuration in daysDurationList">
+                    {{ getTotalBetweenKindPersonAndDaysDuration(kindPerson.id, daysDuration.id) }}
                 </th>
                 <th class="text-center bold font-green">
-                    {{ getTotalByPersona(persona.id) }}
+                    {{ getTotalByKIndPerson(kindPerson.id) }}
                 </th>
             </tr>
 
             <tr>
                 <th class="font-blue text-uppercase  text-center">Total</th>
-                <th class="bold font-green text-center" ng-repeat="duracion in duracionList">
-                    {{ getTotalByDuracion(duracion.id) }}
+                <th class="bold font-green text-center" ng-repeat="daysDuration in daysDurationList">
+                    {{ getTotalByDaysDuration(daysDuration.id) }}
                 </th>
                 <th class="text-center bold font-green">
-                    {{ getTotalOfPulseras() }}
+                    {{ getTotalOfBracelets() }}
                 </th>
             </tr>
         </table>

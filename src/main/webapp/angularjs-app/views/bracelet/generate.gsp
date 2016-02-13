@@ -39,33 +39,33 @@
                             </label>
                             <div class="col-md-9">
                                 <select ng-init="kindPersontList[0].id"
-                                        ng-model="idPersona"
+                                        ng-model="idKindPerson"
                                         ng-options=" kindPersont.id as kindPersont.name for kindPersont in kindPersontList "
-                                        ng-change="updateCosto()"
+                                        ng-change="updateCostOnView()"
                                         required class="form-control text-uppercase">
                                 </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group {{alerta.flag ? 'has-error' : ''}}">
-                            <label class="col-md-3 control-label">Duración: <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-md-9">
-                                <select ng-init="daysDurationList[0].id"
-                                        ng-model="idDuracion"
-                                        ng-options=" daysDuration.id as daysDuration.days for daysDuration in daysDurationList "
-                                        ng-change="updateCosto()"
-                                        required class="form-control text-uppercase">
-                                </select>
-                                <span class="help-block" ng-show="alerta.flag"> {{alerta.message}} </span>
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-3 control-label">Duración: <span class="text-danger">*</span>
+                            </label>
+                            <div class="col-md-9">
+                                <select ng-init="daysDurationList[0].id"
+                                        ng-model="idDaysDuration"
+                                        ng-options=" daysDuration.id as daysDuration.days for daysDuration in daysDurationList "
+                                        ng-change="updateCostOnView()"
+                                        required class="form-control text-uppercase">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group {{costCurrent <= 0 ? 'has-error' : ''}}">
                             <label class="col-md-3 control-label">Costo:
                             </label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" value="{{ costo  | currency}}" readonly>
+                                <input type="text" class="form-control" value="{{ costCurrent  | currency}}" readonly>
+                                <span class="help-block" ng-show="costCurrent <= 0"> {{alertNotFound}} </span>
                             </div>
                         </div>
 
@@ -73,33 +73,33 @@
                             <label class="col-md-3 control-label">Cantidad de Pulseras:
                             </label>
                             <div class="col-md-9">
-                                <input type="number" class="form-control" value="0" ng-model="cantidad" min="1" step="1">
+                                <input type="number" class="form-control" value="0" ng-model="amount" min="1" step="1">
                             </div>
                         </div>
 
                         <div class="form-actions text-right">
                             <a  type="button"
                                 class="btn btn-success green"
-                                ng-disabled="cantidad <= 0 || alerta.flag"
-                                ng-hide="cantidad <= 0 || alerta.flag"
-                                ng-click="preparConfirmacion()"
+                                ng-disabled="amount <= 0 || costCurrent <= 0 "
+                                ng-hide="amount <= 0 || costCurrent <= 0"
+                                ng-click="preparingConfirmation()"
                                 data-toggle="modal" href="#static">Añadir</a>
                         </div>
                     </div>
 
                     <div class="col-md-7">
                         <div class="row text-center">
-                            <h4>Resumen de Pulseras a Generar y Asignar a: <b>{{vendedor.nombres}} {{vendedor.apellidos}}</b></h4>
+                            <h4>Resumen de Pulseras a Generar</h4>
                         </div>
                         <div  data-ng-include="'angularjs-app/views/vendedor/tpl/resumen-generar.gsp'">
 
                         </div>
-                        <div class="row text-right">
+                        <div class="row text-center">
 
                             <a  type="button"
                                 class="btn btn-success green"
-                                ng-disabled="getTotalOfPulseras() == 0"
-                                ng-hide=" getTotalOfPulseras() == 0"
+                                ng-disabled="getTotalOfBracelets() == 0"
+                                ng-hide=" getTotalOfBracelets() == 0"
                                 ng-click="null"
                                 data-toggle="modal" href="#generar">Generar</a>
                         </div>
@@ -120,11 +120,11 @@
                 <h4 class="modal-title">Aviso</h4>
             </div>
             <div class="modal-body">
-                <p> {{confirmacion}} </p>
+                <p> {{confirmation}} </p>
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn red" >Cancelar</button>
-                <button type="button" data-dismiss="modal" class="btn green" ng-click="sumarPulseras()">Ok</button>
+                <button type="button" data-dismiss="modal" class="btn green" ng-click="addBracelets()">Ok</button>
             </div>
         </div>
     </div>
