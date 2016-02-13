@@ -7,14 +7,7 @@ import mx.capitalbus.app.circuit.Circuit
 class CostBraceletController {
 
     def costBraceletByCircuit() {
-        def a = CostBracelet.createCriteria()
-        def results = a.list {
-            eq("circuit", Circuit.findById(params.int('id')))
-        }
-        if (results != null) {
-            def pd = results.personDuration
-
-            render(pd as JSON)
-        }
+        def r  = CostBracelet.findAllByCircuit(Circuit.findById(params.int('id')))
+        render ([r] as JSON)
     }
 }
