@@ -1,5 +1,6 @@
 package mx.capitalbus.app.user
 
+import mx.capitalbus.app.bracelet.Bracelet
 import mx.capitalbus.app.security.User
 
 
@@ -10,6 +11,8 @@ class Salesman extends User{
     Date birthdate
     String telephone
 
+    static hasMany = [bracelet: Bracelet]
+    static mappedBy = [bracelet: 'salesman']
 
     static constraints = {
     }

@@ -5,6 +5,9 @@ class BraceletState {
     String name
     String description
 
+    static hasMany = [bracelet: Bracelet]
+    static mappedBy = [bracelet: 'braceletState']
+
     static constraints = {
     }
 

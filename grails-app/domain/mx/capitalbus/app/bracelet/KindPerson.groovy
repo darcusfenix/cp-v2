@@ -4,6 +4,9 @@ class KindPerson {
 
     String name
 
+    static hasMany = [joinTable: CostBracelet]
+    static mappedBy = [joinTable: 'kindPerson']
+
     static constraints = {
     }
 

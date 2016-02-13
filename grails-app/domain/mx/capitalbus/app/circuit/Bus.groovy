@@ -11,7 +11,8 @@ class Bus {
     String currentAltitude
     boolean enabled
 
-    Circuit circuit
+    //Circuit circuit
+    static belongsTo = [circuit: Circuit]
 
     static constraints = {
     }
