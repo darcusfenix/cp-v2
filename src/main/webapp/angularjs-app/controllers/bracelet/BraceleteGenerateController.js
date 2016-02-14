@@ -7,7 +7,7 @@ function BraceleteGenerateController($rootScope,
                                      $http,
                                      $timeout,
                                      $stateParams,
-                                     Salesman,
+                                     Bracelet,
                                      Circuit,
                                      KindPerson,
                                      DaysDuration, CostBracelet) {
@@ -31,6 +31,10 @@ function BraceleteGenerateController($rootScope,
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
         $scope.getCircuits();
+    });
+
+    $scope.breceletInstance  = Bracelet.create(function (data) {
+        $scope.breceletInstance = data;
     });
 
 
@@ -219,6 +223,47 @@ function BraceleteGenerateController($rootScope,
         }
         $scope.amount = 0;
         return;
+    };
+
+    $scope.resetValuesBracelets = function () {
+        for (var i = 0; i < $scope.braceletList.length; i++) {
+            $scope.braceletList[i].amount = 0;
+        }
+    };
+
+
+    $scope.generetingBracelets = function () {
+
+        App.blockUI({
+            boxed: !0,
+            message: "Generando Brazaletes..."
+        });
+
+        $scope.breceletInstance.$save({
+            "json": $scope.prepareJSON(),
+            "idVendedor": $stateParams.id
+        }, function (data) {
+            App.unblockUI();
+            $scope.resetValuesBracelets();
+            var anchor = angular.element('<a/>');
+            anchor.attr({
+                href: 'data:text/csv;charset=utf-8,' + encodeURIComponent(data.text),
+                target: '_blank',
+                download: 'now.csv'
+            })[0].click();
+
+        }, function (err) {
+            App.unblockUI();
+        });
+    };
+    $scope.prepareJSON = function () {
+        var json = '';
+        for (i = 0; i < $scope.braceletList.length; i++) {
+            json += '{"amount": ' + $scope.braceletList[i].amount + ', "idCost": ' + $scope.braceletList[i].idCost + '}';
+            if (i < $scope.braceletList.length - 1)
+                json += ','
+        }
+        return json + '';
     };
 
 

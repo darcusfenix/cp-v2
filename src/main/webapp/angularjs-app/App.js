@@ -125,7 +125,7 @@ angular.module('CapitalBusApp').config(['$stateProvider', '$urlRouterProvider', 
                         BASE_URL + 'angularjs-app/resources/CostoPulseraResource.js',
                         BASE_URL + 'angularjs-app/resources/DaysDurationResource.js',
                         BASE_URL + 'angularjs-app/resources/KindPersonResource.js',
-                        BASE_URL + 'angularjs-app/resources/PulseraResource.js',
+                        BASE_URL + 'angularjs-app/resources/BraceletResource.js',
                         BASE_URL + 'angularjs-app/resources/SalesmanResource.js',
 
                         BASE_URL + 'angularjs-app/controllers/vendedor/SalesmanSearchController.js',

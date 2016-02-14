@@ -134,13 +134,13 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Confirmar</h4>
+                <h4 class="modal-title">Confirme la siguiente generación de brazaletes</h4>
             </div>
             <div class="modal-body" data-ng-include="'angularjs-app/views/vendedor/tpl/resumen-generar.gsp'">
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal" class="btn red" >Cancelar</button>
-                <button type="button" data-dismiss="modal" class="btn green" ng-click="generarPulseras()">Sí, generar</button>
+                <button type="button" data-dismiss="modal" class="btn green" ng-click="generetingBracelets()">Sí, generar</button>
             </div>
         </div>
     </div>
