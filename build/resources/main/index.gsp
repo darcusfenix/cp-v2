@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 
-<html lang="en" data-ng-app="CapitalBusApp">
+<html lang="en" data-ng-app="CapitalBusApp" >
 
 <head>
     <title></title>
@@ -45,18 +45,19 @@
 <!-- END PAGE SPINNER -->
 
 <!-- BEGIN HEADER -->
-<div data-ng-include="'${resource(dir: 'tpl/', file: 'header.html')}'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
+<div data-ng-include="'${resource(dir: 'tpl/', file: 'header.gsp')}'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top"> </div>
 <!-- END HEADER -->
 <div class="clearfix"> </div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
     <!-- BEGIN SIDEBAR -->
-    <div data-ng-include="'${resource(dir: 'tpl/', file: 'sidebar.html')}'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
+
+    <div data-ng-include="'${resource(dir: 'tpl/', file: 'sidebar.gsp')}'" data-ng-controller="SidebarController" class="page-sidebar-wrapper"> </div>
     <!-- END SIDEBAR -->
     <div class="page-content-wrapper">
         <div class="page-content">
             <!-- BEGIN PAGE HEAD -->
-            <div data-ng-include="'${resource(dir: 'tpl/', file: 'page-head.html')}'" data-ng-controller="PageHeadController" class="page-head"> </div>
+            <div data-ng-include="'${resource(dir: 'tpl/', file: 'page-head.gsp')}'" data-ng-controller="PageHeadController" class="page-head"> </div>
             <!-- END PAGE HEAD -->
             <!-- BEGIN ACTUAL CONTENT -->
             <div ui-view class="fade-in-up">
@@ -69,7 +70,7 @@
 </div>
 <!-- END CONTAINER -->
 <!-- BEGIN FOOTER -->
-<div data-ng-include="'${resource(dir: 'tpl/', file: 'footer.html')}'" data-ng-controller="FooterController" class="page-footer"> </div>
+<div data-ng-include="'${resource(dir: 'tpl/', file: 'footer.gsp')}'" data-ng-controller="FooterController" class="page-footer"> </div>
 <!-- END FOOTER -->
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
