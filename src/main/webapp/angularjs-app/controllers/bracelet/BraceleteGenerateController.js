@@ -236,22 +236,21 @@ function BraceleteGenerateController($rootScope,
 
         App.blockUI({
             boxed: !0,
-            message: "Generando Brazaletes..."
+            message: "Generando Brazaletes... \n NO ACTUALIZAR O CERRAR PÁGINA"
         });
 
         $scope.breceletInstance.$save({
-            "json": $scope.prepareJSON(),
-            "idVendedor": $stateParams.id
+            "json": $scope.prepareJSON()
         }, function (data) {
             App.unblockUI();
-            $scope.resetValuesBracelets();
+
             var anchor = angular.element('<a/>');
             anchor.attr({
                 href: 'data:text/csv;charset=utf-8,' + encodeURIComponent(data.text),
                 target: '_blank',
-                download: 'now.csv'
+                download: 'generación-de-'+$scope.getTotalOfBracelets()+'-brazaletes.csv'
             })[0].click();
-
+            $scope.resetValuesBracelets();
         }, function (err) {
             App.unblockUI();
         });
