@@ -27,7 +27,7 @@ class BootStrap {
         kp.save()
 
         KindPerson kp2 = new KindPerson()
-        kp2.name = "Adultos"
+        kp2.name = "adultos"
         kp2.save()
 
         DaysDuration dd = new DaysDuration()
@@ -35,7 +35,7 @@ class BootStrap {
         dd.save()
 
         DaysDuration dd2 = new DaysDuration()
-        dd2.days = "sábado y domingo"
+        dd2.days = "sábados, Domingos y días festivos"
         dd2.save(flush : true)
 
         def superAdminRole = new Role('ROLE_SUPER_ADMIN').save()
@@ -63,7 +63,7 @@ class BootStrap {
         sa.password = "capitalbus"
         sa.email = "super-admin@capitalbus.mx"
         sa.enabled = true
-        sa.username = "becm"
+        sa.username = "admin"
         sa.birthdate = new Date()
         sa.firstName = "Benito"
         sa.lastName = "Mendoza"
@@ -129,18 +129,32 @@ class BootStrap {
         b.save()
 
         CostBracelet cb = new CostBracelet()
-        cb.cost = 170.50
-        cb.kindPerson = kp
-        cb.daysDuration = dd
+        cb.cost = 170.00
+        cb.kindPerson = kp2
+        cb.daysDuration = dd2
         cb.circuit = c
         cb.save()
 
         CostBracelet cb2 = new CostBracelet()
-        cb2.cost = 50
-        cb2.kindPerson = kp2
+        cb2.cost = 80.00
+        cb2.kindPerson = kp
         cb2.daysDuration = dd2
         cb2.circuit = c
         cb2.save()
+
+        CostBracelet cb3 = new CostBracelet()
+        cb3.cost = 140.00
+        cb3.kindPerson = kp2
+        cb3.daysDuration = dd
+        cb3.circuit = c
+        cb3.save()
+
+        CostBracelet cb4 = new CostBracelet()
+        cb4.cost = 70.00
+        cb4.kindPerson = kp
+        cb4.daysDuration = dd
+        cb4.circuit = c
+        cb4.save()
 
     }
     def destroy = {
