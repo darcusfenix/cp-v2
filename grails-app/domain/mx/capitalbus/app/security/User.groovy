@@ -57,8 +57,10 @@ class User {
     }
 
     static mapping = {
+
         tablePerHierarchy false
         id generator: 'identity'
+        table '`user`'
         password column: '`password`'
     }
 }

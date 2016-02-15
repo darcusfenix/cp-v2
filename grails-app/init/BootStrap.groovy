@@ -14,6 +14,7 @@ import mx.capitalbus.app.user.SuperAdmin
 class BootStrap {
 
     def init = { servletContext ->
+
         Circuit c = new Circuit()
         c.name = "Cuircuito General"
         c.enabled = true
@@ -140,22 +141,6 @@ class BootStrap {
         cb2.daysDuration = dd2
         cb2.circuit = c
         cb2.save()
-
-        Bracelet bracelet = new Bracelet()
-        bracelet.braceletState = bs
-        bracelet.code = "0123456789"
-        bracelet.creationDate = new Date()
-        bracelet.costBracelet = cb
-        bracelet.validate()
-        bracelet.save()
-
-        Bracelet bracelet2 = new Bracelet()
-        bracelet2.braceletState = bs
-        bracelet2.code = "0123456781"
-        bracelet2.creationDate = new Date()
-        bracelet2.costBracelet = cb
-        bracelet2.validate()
-        bracelet2.save()
 
     }
     def destroy = {

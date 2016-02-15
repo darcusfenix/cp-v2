@@ -1,8 +1,6 @@
-grails.plugin.springsecurity.securityConfigType = "Annotation"
 grails.plugin.springsecurity.securityConfigType = "InterceptUrlMap"
 
-
-grails.plugin.springsecurity.interceptUrlMap = [
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         [pattern: '/',               access: ['ROLE_SUPER_ADMIN']],
         [pattern: '/error',          access: ['permitAll']],
         [pattern: '/index',          access: ['ROLE_SUPER_ADMIN']],
@@ -21,3 +19,5 @@ grails.plugin.springsecurity.interceptUrlMap = [
         [pattern: '/static/**',          access: ['ROLE_SUPER_ADMIN']],
         [pattern: '/angularjs-app/views/**',          access: ['ROLE_SUPER_ADMIN']]
 ]
+
+grails.plugin.springsecurity.securityConfigType = "Annotation"

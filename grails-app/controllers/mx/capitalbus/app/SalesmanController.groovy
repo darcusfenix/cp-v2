@@ -1,9 +1,10 @@
 package mx.capitalbus.app
 
 import grails.converters.JSON
+import grails.plugin.springsecurity.annotation.Secured
 import mx.capitalbus.app.repository.SalesmanRepository
 
-
+@Secured(['ROLE_SUPER_ADMIN', 'ROLE_VENDEDOR'])
 class SalesmanController {
 
     SalesmanRepository salesmanRepository

@@ -14,32 +14,35 @@ class BraceletService {
     def generatingBracelets(Map objeto) {
 
         def map = "ID,CODIGO,TIPO,FECHA_CREACION\n";
-        def bs = BraceletState.findById(2)
+        //todo cuidar las secuencias con el id
+        def bs = BraceletState.findByName("activado")
         def dateNow = new Date()
 
+
         objeto.each { w ->
-            def sp = getLastAutoIncrementBracelet();
-            log.error(sp)
-            def cc = CostBracelet.findById(w.key)
-            log.error(cc)
-            for(int i = sp; i < (sp + w.value); i++ ){
-                int idCod = i * 3;
-                def codeEncrypted = encodeId (idCod)
-                Bracelet bracelet = new Bracelet()
-                bracelet.code = codeEncrypted
-                bracelet.braceletState = bs
-                bracelet.costBracelet = cc
-                bracelet.creationDate = dateNow
-                if (bracelet.validate()) {
-                    bracelet.save(flush: true)
-                    if (bracelet.id != null){
-                        map += bracelet.id +","+bracelet.code.toLowerCase().trim() + "," + bracelet.costBracelet.id + "," + bracelet.creationDate  + "\n"
+            if (w.value > 0){
+                def sp = getLastAutoIncrementBracelet();
+
+                def cc = CostBracelet.findById(w.key)
+                for (int i = sp; i < (sp + w.value); i++) {
+                    int idCod = i * 3;
+                    def codeEncrypted = encodeId(idCod)
+                    Bracelet bracelet = new Bracelet()
+                    bracelet.code = codeEncrypted
+                    bracelet.braceletState = bs
+                    bracelet.costBracelet = cc
+                    bracelet.creationDate = dateNow
+                    if (bracelet.validate()) {
+                        bracelet.save(flush: true)
+                        if (bracelet.id != null) {
+                            map += bracelet.id + "," + bracelet.code.toLowerCase().trim() + "," + bracelet.costBracelet.id + "," + bracelet.creationDate + "\n"
+                        }
+                    } else {
+                        log.error(bracelet.errors)
+                        return "error";
                     }
-                }else {
-                    log.error(bracelet.errors)
                 }
             }
-
         }
         map
     }
@@ -55,10 +58,11 @@ class BraceletService {
     }
 
     private Integer getLastAutoIncrementBracelet() {
-        //todo cuidar los cambios de nombre aquí mencionados
+        //todo cuidar los cambios de nombre aquí mencionados y uso de secuencias en postgresql
         def session = sessionFactory.currentSession
-        def String query = 'SELECT AUTO_INCREMENT FROM information_schema.tables ' +
-                'WHERE table_name=\'bracelet\' AND table_schema=\'' + getDatabaseSchema() + '\';'
+        //def String query = 'SELECT AUTO_INCREMENT FROM information_schema.tables ' +
+        //  'WHERE table_name=\'bracelet\' AND table_schema=\'' + getDatabaseSchema() + '\';'
+        def query = "select nextval('bracelet_id_seq')"
         def sqlQuery = session.createSQLQuery(query)
         (Integer) sqlQuery.uniqueResult() ?: 0
     }

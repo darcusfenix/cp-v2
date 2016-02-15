@@ -1,9 +1,10 @@
 package mx.capitalbus.app
 
 import grails.converters.JSON
+import grails.plugin.springsecurity.annotation.Secured
 import groovy.json.JsonSlurper
 import mx.capitalbus.app.bracelet.Bracelet
-
+@Secured('ROLE_SUPER_ADMIN')
 class BraceletController {
 
     def braceletService
