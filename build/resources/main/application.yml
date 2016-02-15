@@ -9,9 +9,9 @@ hibernate:
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: com.mysql.jdbc.Driver
-    dialect : org.hibernate.dialect.MySQLDialect
-    username: root
+    driverClassName: org.postgresql.Driver
+    dialect : org.hibernate.dialect.PostgreSQLDialect
+    username: postgres
     password: 2706
     logSql: true
 
@@ -21,7 +21,7 @@ environments:
     development:
         dataSource:
             dbCreate: create-drop
-            url: jdbc:mysql://localhost/test
+            url: jdbc:postgresql://localhost/test
     test:
         dataSource:
             dbCreate: update
