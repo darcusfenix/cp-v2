@@ -1,5 +1,5 @@
 <!-- BEGIN HEADER INNER -->
-<div class="page-header-inner" xmlns:sec="http://java.sun.com/xml/ns/persistence/orm">
+<div class="page-header-inner" xmlns:g="http://www.w3.org/1999/xhtml">
     <!-- BEGIN LOGO -->
     <div class="page-logo">
 
@@ -27,7 +27,12 @@
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                        data-close-others="true">
                                 <span class="username username-hide-on-mobile">
-                                    <sec:loggedInUserInfo field="username" />
+                                    <sec:access expression="hasRole('ROLE_SUPER_ADMIN')">
+                                        SUPER ADMINISTRADOR
+                                    </sec:access>
+                                    <sec:access expression="hasRole('ROLE_SALESMAN')">
+                                        VENDEDOR
+                                    </sec:access>
                                 </span>
 
                         <img alt="" class="img-circle"

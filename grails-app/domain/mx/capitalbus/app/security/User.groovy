@@ -36,12 +36,11 @@ class User {
     }
 
     def beforeUpdate() {
-        //todo Habilitar cuando se agregue la seguridad
-        /*
+
         if (isDirty('password')) {
             encodePassword()
         }
-        */
+
     }
 
     protected void encodePassword() {

@@ -1,10 +1,8 @@
 package mx.capitalbus.app.user
 
-import mx.capitalbus.app.bracelet.Bracelet
 import mx.capitalbus.app.security.User
 
-
-class Salesman extends User{
+class SuperAdmin extends User{
 
     String firstName
     String lastName
@@ -12,8 +10,6 @@ class Salesman extends User{
     String telephone
     String gender
 
-    static hasMany = [bracelet: Bracelet]
-    static mappedBy = [bracelet: 'salesman']
 
     static constraints = {
     }
@@ -22,3 +18,4 @@ class Salesman extends User{
         id generator: 'identity'
     }
 }
+
