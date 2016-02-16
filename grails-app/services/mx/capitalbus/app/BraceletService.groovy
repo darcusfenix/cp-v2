@@ -1,9 +1,12 @@
 package mx.capitalbus
 
+
 import grails.transaction.Transactional
 import mx.capitalbus.app.bracelet.Bracelet
 import mx.capitalbus.app.bracelet.BraceletState
 import mx.capitalbus.app.bracelet.CostBracelet
+
+import java.text.SimpleDateFormat
 
 @Transactional
 class BraceletService {
@@ -65,5 +68,33 @@ class BraceletService {
         def query = "select nextval('bracelet_id_seq')"
         def sqlQuery = session.createSQLQuery(query)
         (Integer) sqlQuery.uniqueResult() ?: 0
+    }
+
+    def String getStringOfCSV(String date){
+        String mapCVS = null;
+
+        SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
+
+        def d = dateParser.parse(date)
+
+        if (d != null) {
+            mapCVS = "ID,CODIGO,TIPO,FECHA_CREACION\n"
+            Calendar calender = Calendar.getInstance();
+            calender.setTimeInMillis(d.getTime());
+            calender.add(Calendar.SECOND, 100);
+            Date changeDate = calender.getTime();
+
+
+            def bb = Bracelet.createCriteria()
+            def results = bb.list {
+                between("creationDate", d, changeDate)
+            }
+
+            results.each { b ->
+                mapCVS += b.id + "," + b.code.toLowerCase().trim() + "," + b.costBracelet.id + "," + b.creationDate + "\n"
+            }
+
+        }
+        mapCVS
     }
 }

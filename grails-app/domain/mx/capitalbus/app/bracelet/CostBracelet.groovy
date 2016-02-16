@@ -7,8 +7,8 @@ class CostBracelet {
 
     float cost
 
-    static hasMany = [bracelet: Bracelet]
-    static mappedBy = [bracelet: 'costBracelet']
+    //static hasMany = [bracelet: Bracelet]
+    //static mappedBy = [bracelet: 'costBracelet']
 
     static belongsTo = [daysDuration : DaysDuration, kindPerson : KindPerson, circuit : Circuit]
 
