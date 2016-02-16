@@ -14,7 +14,7 @@ import mx.capitalbus.app.user.SuperAdmin
 class BootStrap {
 
     def init = { servletContext ->
-
+/*
         Circuit c = new Circuit()
         c.name = "Cuircuito General"
         c.enabled = true
@@ -155,7 +155,7 @@ class BootStrap {
         cb4.daysDuration = dd
         cb4.circuit = c
         cb4.save()
-
+*/
     }
     def destroy = {
     }
