@@ -8,7 +8,7 @@
 
 function HistoryBrazaletsController($rootScope,
                                      $scope,
-                                     $http,
+                                        $filter,
                                      $timeout,
                                      $stateParams,
                                      Bracelet) {
@@ -17,25 +17,20 @@ function HistoryBrazaletsController($rootScope,
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
-
+        $scope.getHistory();
     });
 
-    $scope.breceletInstance  = Bracelet.create(function (data) {
-        $scope.breceletInstance = data;
-    });
 
-    $scope.getCircuits = function () {
-
+    $scope.getHistory = function () {
         App.blockUI(
             {
                 target: "#p-b-history-bracelets",
                 boxed: !0,
                 message: "Cargando..."
             });
-
-        Bracelet.query(function (data) {
+        Bracelet.history(function (data) {
             $scope.historyList = data;
-
+            App.unblockUI("#p-b-history-bracelets");
         }, function (err) {
             console.log(err)
         });
@@ -44,14 +39,11 @@ function HistoryBrazaletsController($rootScope,
     $scope.getDaysDuration = function () {
         DaysDuration.query(function (data) {
             $scope.daysDurationList = data;
-            App.unblockUI("#p-b-history-bracelets");
+
             $scope.updateCostOnView();
             $scope.preparingListOfBracelets();
         }, function (err) {
             console.log(err)
         });
     };
-
-
-
 }

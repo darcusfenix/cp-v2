@@ -25,6 +25,12 @@
                         <span class="title">Generar Brazaletes</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="#/historial-brazaletes">
+                        <i class="icon-settings"></i>
+                        <span class="title">Historial de Brazaletes</span>
+                    </a>
+                </li>
             </sec:access>
 
         </ul>

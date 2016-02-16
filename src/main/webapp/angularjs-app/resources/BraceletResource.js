@@ -23,6 +23,11 @@ angular.module('CapitalBusApp').factory('Bracelet', function ($resource) {
         save: {
             method: 'GET',
             url: 'bracelet/save'
+        },
+        history: {
+            method: 'GET',
+            isArray: true,
+            url: 'bracelet/history'
         }
     });
 });
