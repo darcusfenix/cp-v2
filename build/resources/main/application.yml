@@ -21,7 +21,7 @@ environments:
     development:
         dataSource:
             dbCreate: update
-            url: jdbc:postgresql://localhost/test
+            url: jdbc:postgresql://localhost/capitalbus
     test:
         dataSource:
             dbCreate: update
