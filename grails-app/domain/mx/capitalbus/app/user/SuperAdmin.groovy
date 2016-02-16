@@ -16,6 +16,7 @@ class SuperAdmin extends User{
 
     static mapping = {
         id generator: 'identity'
+        table 'super_admin'
     }
 }
 

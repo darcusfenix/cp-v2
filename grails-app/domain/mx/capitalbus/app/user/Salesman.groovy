@@ -19,6 +19,7 @@ class Salesman extends User{
     }
 
     static mapping = {
-        id generator: 'identity'
+        id generator: 'sequence'
+        table 'salesman'
     }
 }

@@ -258,7 +258,7 @@ function BraceleteGenerateController($rootScope,
     $scope.prepareJSON = function () {
         var json = '';
         for (i = 0; i < $scope.braceletList.length; i++) {
-            json += '{"amount": ' + $scope.braceletList[i].amount + ', "idCost": ' + $scope.braceletList[i].idCost + '}';
+            json += '{"amount":"' + $scope.braceletList[i].amount + '", "idCost":"' + $scope.braceletList[i].idCost + '"}';
             if (i < $scope.braceletList.length - 1)
                 json += ','
         }

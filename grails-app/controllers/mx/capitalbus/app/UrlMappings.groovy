@@ -15,6 +15,8 @@ class UrlMappings {
 
 
         "/salesman/$id"(controller: 'salesman', action: 'get')
+        "/bracelet/history"(controller: 'bracelet', action: 'getListOfCreations')
+        "/bracelet/date"(controller: 'bracelet', action: 'getCSV')
         "/costBracelet/circuit/$id"(controller: 'costBracelet', action: 'costBraceletByCircuit')
     }
 }

@@ -11,5 +11,6 @@ class Partner extends User{
 
     static mapping = {
         id generator: 'identity'
+        table 'partner'
     }
 }

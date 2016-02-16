@@ -9,19 +9,19 @@ hibernate:
 dataSource:
     pooled: true
     jmxExport: true
-    driverClassName: com.mysql.jdbc.Driver
-    dialect : org.hibernate.dialect.MySQLDialect
-    username: root
+    driverClassName: org.postgresql.Driver
+    dialect : org.hibernate.dialect.PostgreSQLDialect
+    username: postgres
     password: 2706
-    logSql: true
+    logSql: false
 
 
 
 environments:
     development:
         dataSource:
-            dbCreate: create-drop
-            url: jdbc:mysql://localhost/test
+            dbCreate: update
+            url: jdbc:postgresql://localhost/capitalbus
     test:
         dataSource:
             dbCreate: update
@@ -29,7 +29,7 @@ environments:
     production:
         dataSource:
             dbCreate: update
-            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:postgresql://localhost/capitalbus
             properties:
                 jmxEnabled: true
                 initialSize: 5
